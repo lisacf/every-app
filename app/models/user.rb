@@ -1,6 +1,12 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
+  has_many :cupcakes
+  has_many :recipes
+  has_many :stores
+  has_many :photos
+  has_many :ratings
+
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -8,6 +14,8 @@ class User < ActiveRecord::Base
 		where(auth.slice("provider", "uid")).first_or_create do |user|
 			user.provider = auth.provider
 			user.uid = auth.uid
+			user.oauth_token = auth.credentials.oauth_token
+			user.oauth_expires_at = Time.at(auth.credentials.expires_at)
 			if auth.provider == "facebook"
 				user.username = auth.info.name
 			else
@@ -37,5 +45,9 @@ class User < ActiveRecord::Base
 	  else
 	    super
 	  end
+	end
+
+	def facebook
+		@facebook ||= Koala::Facebook::API.new(oauth_token)
 	end
 end

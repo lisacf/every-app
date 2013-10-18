@@ -1,21 +1,74 @@
+$brand-primary: #8019ea;
+$brand-hover: #e000ff;
+$font-size-base:          16px;
+$headings-font-weight:    500;
+$font-color: black;
+
+// NAV BAR
+$navbar-default-bg: #fff;
+// Navbar links
+$navbar-default-link-color:        $brand-primary;
+$navbar-default-link-hover-color:  $brand-hover;
+$navbar-default-link-hover-bg:    	transparentize($brand-primary, .75);
+$navbar-default-link-active-color:  $brand-hover;
+$navbar-default-link-active-bg:     transparentize($brand-primary, .75);
+
+// Navbar brand label
+$navbar-default-brand-color:       $brand-primary;
+$navbar-default-brand-hover-color:  $brand-hover;
+$navbar-default-brand-hover-bg:   transparentize($brand-primary, .75);       
+
+// Navbar toggle
+$navbar-default-toggle-hover-bg:  transparentize($brand-hover, .6);
+$navbar-default-toggle-icon-bar-bg:        $brand-hover;
+$navbar-default-toggle-border-color:       $brand-primary;
 // Set the correct sprite paths
 $iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
 $iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
 
 // Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
-$fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
-$fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot?#iefix");
-$fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
-$fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
-$fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
+// $fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
+// $fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot?#iefix");
+// $fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
+// $fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
+// $fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
 
-$navbar-inverse-bg: #8019ea;//#9437ff
-$navbar-inverse-link-color: #eee;
-$navbar-inverse-toggle-hover-bg: #fe85ff;
+// $navbar-inverse-bg: #8019ea;//#9437ff
+// $navbar-inverse-link-color: #eee;
+// $navbar-inverse-toggle-hover-bg: #fe85ff;
+//$font-family-base:   "Josefin Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-sans-serif:   "Josefin Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$body-bg: lighten(#ff6fcf, 20%);
+$font-family-serif:       "Josefin Sans", Georgia, "Times New Roman", Times, serif;
+$font-family-monospace:   "Josefin Sans", Monaco, Menlo, Consolas, "Courier New", monospace;
+$font-family-base:        $font-family-sans-serif;
+$headings-font-family:    $font-family-base;
+// $headings-font-weight:    bold;
+
 
 @import "twitter/bootstrap";
 // @import "bootstrap";
 body { padding-top: 60px;}
+body,
+.container,
+li,
+p,
+input,
+button,
+select,
+textarea,
+.navbar-search, .search-query {
+  font-family:  "Josefin Sans", sans-serif;
+}
+
+.navbar-brand {
+	font-weight:800;
+	font-size: 2.5em;
+}
+.row img {
+	max-width:100%;
+}
+
 // @import "bootstrap-responsive";
 
 
@@ -35,5 +88,39 @@ body { padding-top: 60px;}
 
 // Example:
 // @linkColor: #ff0000;
+.row {
+	background:#fff;
+}
+.ratings-cake {
+	padding: 0.5em 0;
+}
 
+/* FORMAT RIBBON TITLE BAR */
+
+.ribbon {
+  width: 100%;
+  position: relative;
+  background: #06c5c7;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.1em;
+  font-size: 2em;
+  text-shadow: 0px -1px 0px rgba(0,0,0,0.3);
+  font-weight: bold;
+  padding: 0.1em 1em;
+  margin: 0.5em 0 0.5em;
+  box-shadow: inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 20px rgba(0,0,0,0.1), 0px 1px 1px rgba(0,0,0,0.4);
+  background: -webkit-linear-gradient(top, #78eeeb, #06c5c7);
+  display: inline-block;
+}
+.picture {
+	border: 5px solid pink;
+	height:100%;
+	width:100%;
+}
+.stars {
+  img {
+    width:20%;
+  }
+}
 

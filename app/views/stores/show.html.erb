@@ -1,0 +1,48 @@
+<p>
+  <strong>Name:</strong>
+  <%= @store.name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @store.url %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @store.address %>
+</p>
+
+<p>
+  <strong>LngLat:</strong>
+  Latitude: <%= @store.latitude %>
+  Longitude: <%= @store.longitude %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @store.user_id %>
+</p>
+
+<p>
+  <strong>Storefront:</strong>
+  <%= @store.storefront %>
+</p>
+
+<p>
+  <strong>Facebook:</strong>
+  <%= @store.facebook %>
+</p>
+
+<p>
+  <strong>Average rating:</strong>
+  <%= @store.average_rating %>
+</p>
+
+<p>
+  <strong>Ratings count:</strong>
+  <%= @store.ratings_count %>
+</p>
+
+<%= link_to 'Edit', edit_store_path(@store) %> |
+<%= link_to 'Back', stores_path %>

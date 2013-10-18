@@ -1,2 +1,40 @@
-<h1>Cupcakes#index</h1>
-<p>Find me in app/views/cupcakes/index.html.erb</p>
+<div class="ribbon">
+    <span class="ribbon-content">Cupcake Recipes</span>
+</div>
+
+<div class="row">
+	<% @cupcakes.each do |cupcake| %>
+		<div class="col-xs-6 col-sm-4 col-md-3">
+			<p class="text-center"><%= link_to cupcake.name, cupcake %></p>
+			<div class="row">
+				<div class="col-md-12">
+					<% if cupcake.photos.length >= 1 %>
+						<div class="picture"><%= link_to (filepicker_image_tag cupcake.photos.first.filepicker_url, 
+							w:600, h:600, fit: 'scale'), cupcake %></div>
+					<% else %>
+						<%= image_tag image_url("placeholder.png"), w:300, h:300, fit: 'scale' %>
+					<% end %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-9 col-sm-9 col-xs-11">
+					<%= render_stars(cupcake.average_rating) %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<ul class="list-inline">
+						<% if cupcake.average_rating > 0 %>
+							<li><%= pluralize cupcake.average_rating, "cupcake" %></li>
+							<li><%= pluralize cupcake.ratings.size, 'rating' %>  </li>
+						<% else %>
+							<li>Be the first to rate this recipe! </li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<% end %>
+</div>
+
+

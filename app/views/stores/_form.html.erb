@@ -1,0 +1,38 @@
+<%= form_for(@store) do |f| %>
+  <% if @store.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@store.errors.count, "error") %> prohibited this store from being saved:</h2>
+
+      <ul>
+      <% @store.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, "Store name" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :url, "Website" %>
+    <%= f.url_field :url, class: "form-control"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :address %>
+    <%= f.text_field :address, class: "form-control"  %>
+  </div>
+  <div class="checkbox">
+  <%= f.label :storefront, "Online only" %>
+  <%= f.check_box :storefront %>
+  <p class="help-block">check if cupcakery sells cupcakes but does not have a store front.</p>
+  </div>
+  <div class="form-group">
+    <%= f.label :facebook, "Link to Store's Facebook page" %>
+    <%= f.url_field :facebook, class: "form-control" %>
+  </div>
+  <div>
+    <%= f.submit "Add Store", class: "btn btn-primary" %>
+  </div>
+<% end %>

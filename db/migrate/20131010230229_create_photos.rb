@@ -1,0 +1,12 @@
+class CreatePhotos < ActiveRecord::Migration
+  def change
+    create_table :photos do |t|
+      t.string :filepicker_url
+      t.belongs_to :photoable, polymorphic: true
+
+      t.timestamps
+    end
+    add_index :photos, [:photoable_id, :photoable_type]
+    add_reference :photos, :user, index: true
+  end
+end

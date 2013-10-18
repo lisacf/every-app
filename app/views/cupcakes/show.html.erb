@@ -1,0 +1,120 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-sm-12">
+			<h1><%= @cupcake.name %></h1>
+			<div class="row">
+				<div class="col-md-6 col-sm-6">
+				<!-- Carousel of PHOTOS -->
+					<% if @cupcake.photos.length >= 1 %>
+						<div id="carousel-<%= @cupcake.name %>" class="carousel slide">
+							<ol class="carousel-indicators">
+								<% @cupcake.photos.each_with_index do |photo, index| %>
+									<% if index == 0 %>
+										<li data-target="#carousel-<%= @cupcake.name %>" data-slide-to="<%= index %>" class="active">
+										</li>
+									<% else %>
+										<li data-target="#carousel-<%= @cupcake.name %>" data-slide-to="<%= index %>" >
+										</li>
+									<% end %>
+								<% end %>
+							</ol>
+							<div class="carousel-inner">
+							<% @cupcake.photos.each_with_index do |photo, index| %>
+								<% if index == 0 %>
+								<div class="item active">
+									<%= filepicker_image_tag photo.filepicker_url, w:768, h:768, fit: 'scale' %>
+								</div>
+								<% else %>
+									<div class="item">
+										<%= filepicker_image_tag photo.filepicker_url, w:768, h:768, fit: 'scale' %>
+									</div>
+								<% end %>
+
+							<% end %>
+							</div>
+							<a class="left carousel-control" href="#carousel-<%=@cupcake.name %>" data-slide="prev">
+					    	<span class="icon-prev"></span>
+					  	</a>
+					  	<a class="right carousel-control" href="#carousel-<%=@cupcake.name %>" data-slide="next">
+					    	<span class="icon-next"></span>
+					  	</a>
+						</div>
+						<% else %>
+							<%= image_tag image_url("placeholder.png") %>
+					<% end %>
+					<!-- end of Carousel -->
+					<p><%= link_to "Add a Photo", new_cupcake_photo_path(@cupcake) %></p>
+				</div>
+				<div class="col-md-6 col-sm-6">
+					<div class="col-md-8 col-sm-8 col-xs-8">
+					<%= render_stars(@cupcake.average_rating) %>
+					</div>
+					<% if @cupcake.average_rating > 0 %>
+						<ul class="list-inline">
+							<li><%= pluralize @cupcake.average_rating, 'cupcake' %></li>
+							<li><%= pluralize @cupcake.ratings.size, 'rating' %></li>
+					<% else %>
+							<li>Be the first to rate this recipe!</li>
+					<% end %>
+						</ul>
+					<blockquote><%= @cupcake.description %></blockquote>
+					<p>Source: <%= @cupcake.source %></p>
+				</div>
+			</div>
+			<% @cupcake.recipes.each do |recipe| %>
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<h2><%= recipe.recipe_name %> <%= recipe.cupcake_part %></h2>
+					</div>
+					<div class="col-md-12 col-sm-12">
+						<ul class="list-inline">
+							<% if recipe.cupcake_count %>
+								<li>Makes <%= pluralize recipe.cupcake_count, "cupcake" %></li>
+							<% end %>
+							<% if recipe.baketemp %>
+								<li>Bake Temperature: <%= recipe.baketemp %>°F</li>
+							<% end %>
+							<% if recipe.baketime %>
+								<li>Bake Time: <%= recipe.baketime %> minutes </li>
+							<% end %>
+							<% if recipe.preptime %>
+								<li>Prep Time: <%= recipe.preptime %> minutes </li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<fieldset>
+							<legend>Ingredients</legend>
+							<%= markdown(recipe.ingredients) %>
+						</fieldset>
+					</div>
+					<div class="col-md-6 col-sm-6">
+						<fieldset>
+						<legend>Instructions</legend>
+							<%= markdown(recipe.instructions) %>
+						</fieldset>
+					</div>
+				</div>
+			<% end %>
+		</div>
+		<div class="col-md-4 col-sm-12">
+			<h1> Reviews </h1>
+				<% for rating in @cupcake.ratings %>
+					<fieldset>
+							<div class="row">
+							<div class="col-md-7 col-sm-4 col-xs-8"><%= render_stars(rating.star) %></div>
+							</div>
+							<div class="row">
+							<div class="col-md-12">
+							<%= rating.review %>
+							</div>
+							<div class="col-md-12">
+							<small>Cupcake Aficionado: <%= rating.user.username if rating.user %></small>
+							</div>
+					</fieldset>
+				<% end %>
+		</div>
+	</div>
+</div>

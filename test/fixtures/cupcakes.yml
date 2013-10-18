@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyString
+  source: MyString
+  user: 
+  average_rating: 1.5
+  rating_count: 1
+
+two:
+  name: MyString
+  description: MyString
+  source: MyString
+  user: 
+  average_rating: 1.5
+  rating_count: 1

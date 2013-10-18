@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyString
+  baketemp: 1
+  baketime: 1
+  preptime: 1
+  recipe_id: 1
+
+two:
+  content: MyString
+  baketemp: 1
+  baketime: 1
+  preptime: 1
+  recipe_id: 1

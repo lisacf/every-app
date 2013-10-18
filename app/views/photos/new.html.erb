@@ -1,0 +1,9 @@
+<h1><b>every cupcake</b> </h1>
+<h2>Every Cupcake</h2>
+<%= form_for [@photoable, @photo], 'data-no-turbolink' => true do |f| %>
+	<div class="form-group">
+		<%= f.label :filepicker_url, "Upload Your Cupcake Photo:" %>
+    <%= f.filepicker_field :filepicker_url %>
+  </div>
+    <%= f.submit %>
+<% end %>

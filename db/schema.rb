@@ -11,7 +11,94 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131002044146) do
+ActiveRecord::Schema.define(version: 20131015031641) do
+
+  create_table "cakecombos", force: true do |t|
+    t.integer  "recipe_id"
+    t.integer  "cupcake_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cakecombos", ["cupcake_id"], name: "index_cakecombos_on_cupcake_id"
+  add_index "cakecombos", ["recipe_id"], name: "index_cakecombos_on_recipe_id"
+
+  create_table "cupcakes", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "source"
+    t.integer  "user_id"
+    t.float    "average_rating", default: 0.0, null: false
+    t.integer  "ratings_count",  default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cupcakes", ["user_id"], name: "index_cupcakes_on_user_id"
+
+  create_table "ingredients", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ingredients", ["name"], name: "index_ingredients_on_name", unique: true
+
+  create_table "photos", force: true do |t|
+    t.string   "filepicker_url"
+    t.integer  "photoable_id"
+    t.string   "photoable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "photos", ["photoable_id", "photoable_type"], name: "index_photos_on_photoable_id_and_photoable_type"
+  add_index "photos", ["user_id"], name: "index_photos_on_user_id"
+
+  create_table "ratings", force: true do |t|
+    t.integer  "star"
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.text     "review"
+  end
+
+  add_index "ratings", ["rateable_id", "rateable_type"], name: "index_ratings_on_rateable_id_and_rateable_type"
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
+
+  create_table "recipes", force: true do |t|
+    t.string   "recipe_name"
+    t.string   "cupcake_part"
+    t.integer  "user_id"
+    t.string   "ingredients"
+    t.string   "instructions"
+    t.integer  "baketemp"
+    t.integer  "baketime"
+    t.integer  "preptime"
+    t.integer  "cupcake_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"
+
+  create_table "stores", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "user_id"
+    t.boolean  "storefront"
+    t.string   "facebook"
+    t.float    "average_rating"
+    t.integer  "ratings_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -29,6 +116,8 @@ ActiveRecord::Schema.define(version: 20131002044146) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

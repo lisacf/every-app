@@ -1,5 +1,10 @@
 Everyapp::Application.routes.draw do
-  resources :cupcakes
+  resources :stores do
+    resources :photos
+  end
+  resources :cupcakes do
+    resources :photos
+  end
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   match '/auth/failure', to: redirect('/signin'), via: 'get'
   root to: 'cupcakes#index'
