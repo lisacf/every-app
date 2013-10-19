@@ -1,7 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  filepicker_url: MyString
-
-two:
-  filepicker_url: MyString

@@ -8,8 +8,9 @@ class User < ActiveRecord::Base
   has_many :ratings
 
   devise :database_authenticatable, :registerable, :omniauthable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :token_authenticatable
+         :recoverable, :rememberable, :trackable, :validatable
+        
+  # this is deprecated so I  am trying a solution in app controller :token_authenticatable
 
 	def self.from_omniauth(auth)
 		where(auth.slice("provider", "uid")).first_or_create do |user|
