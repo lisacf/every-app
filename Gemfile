@@ -35,6 +35,12 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+group :test do
+	gem "cucumber-rails", ">= 1.3.0", :require => false
+	gem "database_cleaner", ">= 0.9.1"
+	gem "capybara", ">= 2.0.2"
+	gem "email_spec"
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -57,4 +63,7 @@ gem 'koala'
 
 gem 'geocoder'
 gem 'filepicker-rails'
-gem 'rspec-rails'
+gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
+gem "factory_girl_rails", ">= 4.2.0", :group => [:development, :test]
+gem "better_errors", ">= 0.3.2", :group => :development
+gem "binding_of_caller"

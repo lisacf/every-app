@@ -7,106 +7,106 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # FIRST CUPCAKE RECIPE FOR SHOW
-# cupcake_one = Cupcake.create(name: "Lemon", description: "A light, fluffy cake with zesty lemon flavor.  Topped with icing that tastes like a glass of lemonade.", 
-# 	source: "Cake adapted from Barefoot Contessa Parties! -Lemon Cake.\n Icing adapted from AllRecipes -Lemon Icing")
-# cupcake_one.recipes.build [recipe_name: "Zesty Lemon", cupcake_part: "cake", user_id: 1, 
-# ingredients: "1 stick unsalted butter\n
-# 1 cup granulated sugar\n
-# 2 extra-large eggs\n 
-# 3 Tbsp grated lemon zest (3 to 4 large lemons)\n
-# 1 1/2 cups cake flour\n
-# 1/4 teaspoon baking powder\n
-# 1/4 teaspoon baking soda\n
-# 1/2 teaspoon salt\n
-# 3 Tbsp freshly squeezed lemon juice\n
-# 1/3 cup buttermilk\n
-# 1 teaspoon pure vanilla extract
-# ", 
-# instructions: "Preheat oven. Line a cupcake tin with 12 liners.\n\n
-# Bring butter, eggs and buttermilk to room temperature.  
-# Zest 3 to 4 large lemons to make approximately 3 tablespoons of fine lemon zest.  Squeeze the lemons into a bowl to generate the lemon juice required for the cake and set aside for the frosting.\n\n
+cupcake_one = Cupcake.create(name: "Lemon", description: "A light, fluffy cake with zesty lemon flavor.  Topped with icing that tastes like a glass of lemonade.", 
+	source: "Cake adapted from Barefoot Contessa Parties! -Lemon Cake.\n Icing adapted from AllRecipes -Lemon Icing")
+cupcake_one.recipes.build [recipe_name: "Zesty Lemon", cupcake_part: "cake", user_id: 1, 
+ingredients: "1 stick unsalted butter\n
+1 cup granulated sugar\n
+2 extra-large eggs\n 
+3 Tbsp grated lemon zest (3 to 4 large lemons)\n
+1 1/2 cups cake flour\n
+1/4 teaspoon baking powder\n
+1/4 teaspoon baking soda\n
+1/2 teaspoon salt\n
+3 Tbsp freshly squeezed lemon juice\n
+1/3 cup buttermilk\n
+1 teaspoon pure vanilla extract
+", 
+instructions: "Preheat oven. Line a cupcake tin with 12 liners.\n\n
+Bring butter, eggs and buttermilk to room temperature.  
+Zest 3 to 4 large lemons to make approximately 3 tablespoons of fine lemon zest.  Squeeze the lemons into a bowl to generate the lemon juice required for the cake and set aside for the frosting.\n\n
 
-# Cream the butter and granulated sugar until light and fluffy.  I use an electric mixer at medium speed.  Add the eggs and the lemon zest and continue to mix until well incorporated.\n\n
+Cream the butter and granulated sugar until light and fluffy.  I use an electric mixer at medium speed.  Add the eggs and the lemon zest and continue to mix until well incorporated.\n\n
 
-# Sift the flour, baking powder, baking soda, and salt into a bowl. In a separate bowl combine the lemon juice, buttermilk, and vanilla. Add the flour and buttermilk mixtures alternately to the batter (butter and sugar mixture), beginning and ending with the flour. \n\n
+Sift the flour, baking powder, baking soda, and salt into a bowl. In a separate bowl combine the lemon juice, buttermilk, and vanilla. Add the flour and buttermilk mixtures alternately to the batter (butter and sugar mixture), beginning and ending with the flour. \n\n
 
-# Fill each cupcake liner three quarters of the way to the top.  The mixture will make between 12 and 14 cupcakes.  Bake at 350 degrees F for 22 to 25 minutes or until a toothpick comes out clean.", baketemp: 350, baketime:22, preptime:35, cupcake_count:12]
+Fill each cupcake liner three quarters of the way to the top.  The mixture will make between 12 and 14 cupcakes.  Bake at 350 degrees F for 22 to 25 minutes or until a toothpick comes out clean.", baketemp: 350, baketime:22, preptime:35, cupcake_count:12]
 
-# cupcake_one.recipes.build  [recipe_name: "Lemonade", cupcake_part: "frosting", user_id: 1, 
-# ingredients: "1 stick unsalted butter\n
-# 3 cups confectioner\'s sugar\n
-# 2 tablespoon freshly squeezed lemon juice\n
-# 1/2 teaspoon pure vanilla extract", 
-# instructions: "Bring the butter to room temperature.\n With a mixer beat the butter with lemon juice and vanilla then add confectioner's
-#  sugar and beat until light and fluffy. Add more sugar or lemon juice to adjust the consistency as needed.", preptime:15 ]
-# cupcake_one.ratings.build [star:5, review:"Easy to make.  Light and fluffy with serious lemon flavor.  
-# 	The icing looks beautiful and tastes like sweet lemonade.", user_id:1]
-# cupcake_one.average_rating = 5.0
-# cupcake_one.save
+cupcake_one.recipes.build  [recipe_name: "Lemonade", cupcake_part: "frosting", user_id: 1, 
+ingredients: "1 stick unsalted butter\n
+3 cups confectioner\'s sugar\n
+2 tablespoon freshly squeezed lemon juice\n
+1/2 teaspoon pure vanilla extract", 
+instructions: "Bring the butter to room temperature.\n With a mixer beat the butter with lemon juice and vanilla then add confectioner's
+ sugar and beat until light and fluffy. Add more sugar or lemon juice to adjust the consistency as needed.", preptime:15 ]
+cupcake_one.ratings.build [star:5, review:"Easy to make.  Light and fluffy with serious lemon flavor.  
+	The icing looks beautiful and tastes like sweet lemonade.", user_id:1]
+cupcake_one.average_rating = 5.0
+cupcake_one.save
 
-# cupcake_two = Cupcake.create(name: "Margarita", description: "A party in your mouth.  A zesty, lime cupcake topped with a fresh margarita.", 
-# 	source: "Cake and icing created at everycupcake.com")
-# cupcake_two.recipes.build [recipe_name: "Lime", cupcake_part: "cake", user_id: 1, 
-# ingredients: "1 stick unsalted butter\n
-# 1 cup granulated sugar\n
-# 2 extra-large eggs\n 
-# 3 Tbsp grated lime zest (5 to 6 limes)\n
-# 1 1/2 cups cake flour\n
-# 1/4 teaspoon baking powder\n
-# 1/4 teaspoon baking soda\n
-# 1/2 teaspoon salt\n
-# 3 Tbsp freshly squeezed lime juice\n
-# 1/3 cup buttermilk\n
-# 1 teaspoon pure vanilla extract
-# ", 
-# instructions: "Preheat oven. Line a cupcake tin with 12 liners.\n\n
-# Bring butter, eggs and buttermilk to room temperature.  
-# Zest 5 to 6 limes to make approximately 3 tablespoons of lime zest.  Squeeze the limes into a bowl to generate the lime juice required for the cake and set aside for the frosting.\n\n
+cupcake_two = Cupcake.create(name: "Margarita", description: "A party in your mouth.  A zesty, lime cupcake topped with a fresh margarita.", 
+	source: "Cake and icing created at everycupcake.com")
+cupcake_two.recipes.build [recipe_name: "Lime", cupcake_part: "cake", user_id: 1, 
+ingredients: "1 stick unsalted butter\n
+1 cup granulated sugar\n
+2 extra-large eggs\n 
+3 Tbsp grated lime zest (5 to 6 limes)\n
+1 1/2 cups cake flour\n
+1/4 teaspoon baking powder\n
+1/4 teaspoon baking soda\n
+1/2 teaspoon salt\n
+3 Tbsp freshly squeezed lime juice\n
+1/3 cup buttermilk\n
+1 teaspoon pure vanilla extract
+", 
+instructions: "Preheat oven. Line a cupcake tin with 12 liners.\n\n
+Bring butter, eggs and buttermilk to room temperature.  
+Zest 5 to 6 limes to make approximately 3 tablespoons of lime zest.  Squeeze the limes into a bowl to generate the lime juice required for the cake and set aside for the frosting.\n\n
 
-# Cream the butter and granulated sugar until light and fluffy.  I use an electric mixer at medium speed.  Add the eggs and the lime zest and continue to mix until well incorporated.\n\n
+Cream the butter and granulated sugar until light and fluffy.  I use an electric mixer at medium speed.  Add the eggs and the lime zest and continue to mix until well incorporated.\n\n
 
-# Sift the flour, baking powder, baking soda, and salt into a bowl. In a separate bowl combine the lime juice, buttermilk, and vanilla. Add the flour and buttermilk mixtures alternately to the batter (butter and sugar mixture), beginning and ending with the flour. \n\n
+Sift the flour, baking powder, baking soda, and salt into a bowl. In a separate bowl combine the lime juice, buttermilk, and vanilla. Add the flour and buttermilk mixtures alternately to the batter (butter and sugar mixture), beginning and ending with the flour. \n\n
 
-# Fill each cupcake liner three quarters of the way to the top.  The mixture will make between 12 and 14 cupcakes.  Bake at 350 degrees F for 22 to 25 minutes or until a toothpick comes out clean.
-# ", baketemp: 350, baketime:22, preptime:35, cupcake_count:12]
-# cupcake_two.recipes.build  [recipe_name: "Margarita", cupcake_part: "frosting", user_id: 1, 
-# ingredients: "1 stick unsalted butter\n
-# 4 cups confectioner\'s sugar\n
-# 2 tablespoons freshly squeezed lime juice\n
-# 2 tablespoons Tequila\n
-# 1/2 teaspoon pure vanilla extract", 
-# instructions: "Bring the butter to room temperature.\n With a mixer beat the butter with lime juice, tequila, 
-# and vanilla then add confectioner\'s sugar and beat until light and fluffy. 
-# Add more confectioner\'s sugar or liquid (lime or tequila) to adjust the consistency as needed.", preptime:15]
-# cupcake_two.save
+Fill each cupcake liner three quarters of the way to the top.  The mixture will make between 12 and 14 cupcakes.  Bake at 350 degrees F for 22 to 25 minutes or until a toothpick comes out clean.
+", baketemp: 350, baketime:22, preptime:35, cupcake_count:12]
+cupcake_two.recipes.build  [recipe_name: "Margarita", cupcake_part: "frosting", user_id: 1, 
+ingredients: "1 stick unsalted butter\n
+4 cups confectioner\'s sugar\n
+2 tablespoons freshly squeezed lime juice\n
+2 tablespoons Tequila\n
+1/2 teaspoon pure vanilla extract", 
+instructions: "Bring the butter to room temperature.\n With a mixer beat the butter with lime juice, tequila, 
+and vanilla then add confectioner\'s sugar and beat until light and fluffy. 
+Add more confectioner\'s sugar or liquid (lime or tequila) to adjust the consistency as needed.", preptime:15]
+cupcake_two.save
 
-# cupcake_three = Cupcake.create(name: "Chocolate", description: "Rich chocolate cake.  Simple to make and eat.", 
-# 	source: "Vegan Chocolate Cake - allrecipes.com\n Vegan chocolate icing from allrecipe reviewer KADart05")
-# cupcake_three.recipes.build [recipe_name: "Vegan Chocolate", cupcake_part: "cake", user_id: 1, 
-# ingredients: "1 1/2 cups all-purpose\n
-# 1 cup sugar\n
-# 1/4 cup cocoa powder\n
-# 1 teaspoon baking soda\n
-# 1/2 teaspoon salt\n
-# 1/3 cup vegetable oil\n
-# 1 teaspoon pure vanilla extract\n
-# 1 teaspoon distilled white vinegar\n
-# 1 cup water
-# ", 
-# instructions: "1. Preheat oven to 350 degrees F. Line a cupcake tin with 12 liners.\n\n 
-# 2. Sift together the flour, sugar, cocoa, baking soda and salt.  Add the oil, vanilla, vinegar and water.  Mix together until smooth.\n\n
-# 3. Pour into cupcake liners and bake at 350 degrees F for 22 minutes.
-#  ", baketemp: 350, baketime:22, preptime:15, cupcake_count:12]
+cupcake_three = Cupcake.create(name: "Chocolate", description: "Rich chocolate cake.  Simple to make and eat.", 
+	source: "Vegan Chocolate Cake - allrecipes.com\n Vegan chocolate icing from allrecipe reviewer KADart05")
+cupcake_three.recipes.build [recipe_name: "Vegan Chocolate", cupcake_part: "cake", user_id: 1, 
+ingredients: "1 1/2 cups all-purpose\n
+1 cup sugar\n
+1/4 cup cocoa powder\n
+1 teaspoon baking soda\n
+1/2 teaspoon salt\n
+1/3 cup vegetable oil\n
+1 teaspoon pure vanilla extract\n
+1 teaspoon distilled white vinegar\n
+1 cup water
+", 
+instructions: "1. Preheat oven to 350 degrees F. Line a cupcake tin with 12 liners.\n\n 
+2. Sift together the flour, sugar, cocoa, baking soda and salt.  Add the oil, vanilla, vinegar and water.  Mix together until smooth.\n\n
+3. Pour into cupcake liners and bake at 350 degrees F for 22 minutes.
+ ", baketemp: 350, baketime:22, preptime:15, cupcake_count:12]
 
-# cupcake_three.recipes.build  [recipe_name: "Chocolate Faux-Butter-Cream", cupcake_part: "frosting", user_id: 1, 
-# ingredients: "1/2 cup margarine\n
-# 3 cups confectioner\'s sugar\n
-# 1/4 cup cocoa powder\n
-# 1/2 teaspoon pure vanilla extract\n 
-# 2 tablespoons rice or soy milk",
-# instructions: "Bring the margarine to room temperature.\n With a mixer beat the margarine, confectioner\'s sugar, 
-# cocoa powder, rice or soy milk and vanilla.  Beat frosting until light and fluffy.", preptime:15]
-# cupcake_three.save
+cupcake_three.recipes.build  [recipe_name: "Chocolate Faux-Butter-Cream", cupcake_part: "frosting", user_id: 1, 
+ingredients: "1/2 cup margarine\n
+3 cups confectioner\'s sugar\n
+1/4 cup cocoa powder\n
+1/2 teaspoon pure vanilla extract\n 
+2 tablespoons rice or soy milk",
+instructions: "Bring the margarine to room temperature.\n With a mixer beat the margarine, confectioner\'s sugar, 
+cocoa powder, rice or soy milk and vanilla.  Beat frosting until light and fluffy.", preptime:15]
+cupcake_three.save
 
 
 cupcake_four = Cupcake.create(name: "Mocha Khalua", description: "Chocolate and coffee blend together to create a super rich cupcake.

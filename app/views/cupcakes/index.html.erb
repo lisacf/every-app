@@ -1,7 +1,6 @@
 <div class="ribbon">
     <span class="ribbon-content">Cupcake Recipes</span>
 </div>
-
 <div class="row">
 	<% @cupcakes.each do |cupcake| %>
 		<div class="col-xs-6 col-sm-4 col-md-3">
@@ -12,7 +11,7 @@
 						<div class="picture"><%= link_to (filepicker_image_tag cupcake.photos.first.filepicker_url, 
 							w:600, h:600, fit: 'scale'), cupcake %></div>
 					<% else %>
-						<%= image_tag image_url("placeholder.png"), w:300, h:300, fit: 'scale' %>
+						<div class="picture"><%= image_tag image_url("placeholder.png"), w:300, h:300, fit: 'scale' %></div>
 					<% end %>
 				</div>
 			</div>

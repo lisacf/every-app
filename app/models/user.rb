@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   has_many :ratings
 
   devise :database_authenticatable, :registerable, :omniauthable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :token_authenticatable
 
 	def self.from_omniauth(auth)
 		where(auth.slice("provider", "uid")).first_or_create do |user|

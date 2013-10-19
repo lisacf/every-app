@@ -6,6 +6,8 @@ Everyapp::Application.routes.draw do
     resources :photos
   end
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  devise_for :admins
+  get '/token' => 'cupcake#token', as: :token
   match '/auth/failure', to: redirect('/signin'), via: 'get'
   root to: 'cupcakes#index'
   # The priority is based upon order of creation: first created -> highest priority.

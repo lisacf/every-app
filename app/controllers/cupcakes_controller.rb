@@ -1,5 +1,9 @@
 class CupcakesController < ApplicationController
   before_action :set_cupcake, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: :token
+
+  def token
+  end
   def index
     @cupcakes = Cupcake.all
   end

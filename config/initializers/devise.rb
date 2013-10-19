@@ -37,6 +37,7 @@ Devise.setup do |config|
   # The same considerations mentioned for authentication_keys also apply to request_keys.
   # config.request_keys = []
 
+
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
@@ -225,7 +226,7 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :delete
+  config.sign_out_via = Rails.env.test? ? :get : :delete
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
