@@ -1,3 +1,75 @@
 // Place all the styles related to the cupcakes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/* FORMAT OF STAR ratings BAR */
+/* Star rating inspired by the following blog post. 
+http://lea.verou.me/2011/08/accessible-star-rating-widget-with-pure-css/ */
+.ratings {
+    width: 160px;
+    background: #d3b7ff;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.ratings:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.ratings:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+    content: image-url("outlinecake60.png");
+}
+
+.ratings > input:checked ~ label {
+	 	content: image-url("colorcake60.png");
+}
+
+.ratings:not(:checked) > label:hover,
+.ratings:not(:checked) > label:hover ~ label {
+	 	content: image-url("colorcake60.png");
+}
+
+.ratings > input:checked + label:hover,
+.ratings > input:checked + label:hover ~ label,
+.ratings > input:checked ~ label:hover,
+.ratings > input:checked ~ label:hover ~ label,
+.ratings > label:hover ~ input:checked ~ label {
+	 	content: image-url("colorcake60.png");
+}
+
+.ratings > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
+.rating-bar {
+	float:left;
+	margin: 0 auto;
+	border: solid 1px #CCC;
+}
+.page-head {
+	text-align: center;
+}
+.rating-number {
+	clear:both;
+}
+
+.review {
+    margin-bottom: 0.5em;
+}

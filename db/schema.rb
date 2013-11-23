@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019015312) do
+ActiveRecord::Schema.define(version: 20131105050712) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(version: 20131019015312) do
   add_index "cakecombos", ["cupcake_id"], name: "index_cakecombos_on_cupcake_id"
   add_index "cakecombos", ["recipe_id"], name: "index_cakecombos_on_recipe_id"
 
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "cupcakes", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -65,7 +71,7 @@ ActiveRecord::Schema.define(version: 20131019015312) do
   add_index "ingredients", ["name"], name: "index_ingredients_on_name", unique: true
 
   create_table "photos", force: true do |t|
-    t.string   "filepicker_url"
+    t.string   "image"
     t.integer  "photoable_id"
     t.string   "photoable_type"
     t.datetime "created_at"
@@ -75,6 +81,19 @@ ActiveRecord::Schema.define(version: 20131019015312) do
 
   add_index "photos", ["photoable_id", "photoable_type"], name: "index_photos_on_photoable_id_and_photoable_type"
   add_index "photos", ["user_id"], name: "index_photos_on_user_id"
+
+  create_table "proportions", force: true do |t|
+    t.integer  "ingredient_id"
+    t.integer  "recipe_id"
+    t.float    "amount"
+    t.string   "measure"
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "proportions", ["ingredient_id"], name: "index_proportions_on_ingredient_id"
+  add_index "proportions", ["recipe_id"], name: "index_proportions_on_recipe_id"
 
   create_table "ratings", force: true do |t|
     t.integer  "star"
@@ -90,19 +109,23 @@ ActiveRecord::Schema.define(version: 20131019015312) do
   add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
 
   create_table "recipes", force: true do |t|
-    t.string   "recipe_name"
+    t.string   "name"
     t.string   "cupcake_part"
-    t.integer  "user_id"
-    t.string   "ingredients"
+    t.string   "components"
     t.string   "instructions"
+    t.string   "source"
     t.integer  "baketemp"
-    t.integer  "baketime"
-    t.integer  "preptime"
-    t.integer  "cupcake_count"
+    t.string   "baketime"
+    t.integer  "cupcake_count",  default: 0
+    t.float    "average_rating", default: 0.0, null: false
+    t.integer  "ratings_count",  default: 0
+    t.integer  "category_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "recipes", ["category_id"], name: "index_recipes_on_category_id"
   add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"
 
   create_table "stores", force: true do |t|

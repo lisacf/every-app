@@ -1,16 +1,17 @@
 class CupcakesController < ApplicationController
   before_action :set_cupcake, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: :token
 
-  def token
-  end
   def index
     @cupcakes = Cupcake.all
   end
   
   def show
-    # @ratings = @rateable.ratings
-    # @rating = Rating.new
+    @rateable = @cupcake
+    @ratings = @rateable.ratings.where("id IS NOT NULL")
+    @rating = @ratings.new
+    @photoable = @cupcake
+    @photos = @photoable.photos.where("id IS NOT NULL")
+    @photo = @photos.new
   end
 
   def new
@@ -53,6 +54,6 @@ class CupcakesController < ApplicationController
     end
 
     def cupcake_params
-      params.require(:cupcake).permit(:name, :description, :source, :average_rating, :recipes_attributes => [:id, :recipe_name, :cupcake_part, :cupcake_count, :ingredients, :instructions, :baketemp, :baketime, :preptime])
+      params.require(:cupcake).permit(:name, :description, :source, :average_rating, :recipes_attributes => [:id, :name, :category_id, :cupcake_part, :cupcake_count, :components, :instructions, :baketemp, :baketime, :preptime])
     end
 end

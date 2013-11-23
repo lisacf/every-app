@@ -5,4 +5,16 @@
  *= require_self
  *= require_tree .
 */
+.one {
+	background-color:#dce9ff;
+	background-image: image_url("words.png");
+	background-size: 100%;
+	height: 600px;
+	width: 100%;
+	h1 {
+		text-align: center;
+		color: #111;
+	}
+}
 
+ 

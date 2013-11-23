@@ -1,0 +1,71 @@
+#home .cupcake {
+	background: image_url("applespice.png") no-repeat fixed;
+	background-position: right 20px bottom 20px;
+	background-size:50%;
+	min-height: 1000px;
+	height: 1000px;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1920px;
+	position: relative;
+	h1 {
+		height: 1000px;
+	}
+}
+#home article {
+	height: 1000px;
+	position: absolute;
+	text-align: center;
+	top: 150px;
+	width: 100%;
+}
+
+#about {
+	background: image_url("banana.png") no-repeat;
+	background-position: right 20px bottom 100%;
+	min-height: 500px;
+	height:500px;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1920px;
+	position: relative;
+	-webkit-box-shadow: 0 0 50px rgba(0,0,0,0.8);
+	box-shadow: 0 0 50px rgba(0,0,0,0.8);
+
+}
+#about article {
+	height: 458px;
+	position: absolute;
+	text-align:center;
+	top: 150px;
+	width:100%;
+}
+#bake, #share, #win {
+	height: 300px;
+	title {
+		color:#0c1f8f;
+		font-family: 'Josefin';
+		display: block;
+		text-align:center;
+		font-weight:bold;
+		font-size: 48px;
+	}
+}
+#bake {
+	border: solid 5px pink;
+}
+#share {
+	border: solid 5px pink;
+}
+#win {
+	border: solid 5px pink;
+}
+.welcome {
+	font-family: 'Josefin';
+	h1 {
+		font-family: 'Josefin';
+		text-align: center;
+	}
+}
+
+

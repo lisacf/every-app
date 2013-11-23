@@ -1,7 +1,7 @@
 class CreatePhotos < ActiveRecord::Migration
   def change
     create_table :photos do |t|
-      t.string :filepicker_url
+      t.string :image
       t.belongs_to :photoable, polymorphic: true
 
       t.timestamps

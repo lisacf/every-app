@@ -11,11 +11,24 @@
 		</div>
 		<nav class="navbar-collapse collapse" role="navigation">
 			<ul class="nav navbar-nav navbar-right">
-					<li><%= link_to "Recipes", cupcakes_path %></li>
-					<li><%= link_to "Stores", stores_path %></li>
+					<li><%= link_to "recipes", recipes_path %></li>
 				<% unless user_signed_in?  %>
-  				<li><%= link_to 'Sign up', new_user_registration_path %></li>
-  				<li><%= link_to 'Sign in', new_user_session_path %></li>
+  				<li><%= link_to 'sign up', new_user_registration_path %></li>
+  				<li><%= link_to 'sign in', new_user_session_path %></li>
+  			<% else %>
+  				<% if user_signed_in? -%>
+		        <div id="user_login_box" style="float:right">
+		          <%= current_user.email %> |
+		          <%= link_to 'edit profile', edit_user_registration_path %> |
+		          <%= link_to 'sign out', destroy_user_session_path, method: :delete %>
+		        </div>
+		      <% end -%>
+		      <% if admin_signed_in? -%>
+		        <div id="admin_login_box" style="float:left">
+		          <%= current_admin.email %> |
+		          <%= link_to 'sign out', destroy_admin_session_path, method: :delete %>
+		        </div>
+		      <% end -%>
 				<% end -%>
 		</nav>
 	</div>

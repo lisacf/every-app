@@ -1,0 +1,139 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-sm-12">
+			<h1 class="ribbon"><%= @recipe.name %> <%= @recipe.cupcake_part.capitalize %></h1>
+			<div class="row bg-white">
+				<div class="col-md-5 col-sm-5 col-xs-offset-1 col-xs-9">
+				<!-- Carousel of PHOTOS -->
+					<% if @recipe.photos.length >= 1 %>
+						<div id="carousel-<%= @recipe.name %>" class="carousel slide" data-ride="carousel">
+							<ol class="carousel-indicators">
+								<% @recipe.photos.each_with_index do |photo, index| %>
+									<% if index == 0 %>
+										<li data-target="#carousel-<%= @recipe.name %>" data-slide-to="<%= index %>" class="active">
+										</li>
+									<% else %>
+										<li data-target="#carousel-<%= @recipe.name %>" data-slide-to="<%= index %>" >
+										</li>
+									<% end %>
+								<% end %>
+							</ol>
+							<div class="carousel-inner">
+								<% @recipe.photos.each_with_index do |photo, index| %>
+									<% if index == 0 %>
+										<div class="item active">
+											<% if photo.image? %>
+												<%= image_tag image_url(photo.image) %>
+											<% else %>
+												<%= image_tag image_url(photo.remote_url)%>
+											<% end %>
+										</div>
+									<% else %>
+										<div class="item">
+											<% if photo.image? %>
+												<%= image_tag image_url(photo.image) %>
+											<% else %>
+												<%= image_tag image_url(photo.remote_url)%>
+											<% end %>
+										</div>
+									<% end %>
+								<% end %>
+							</div>
+							<a class="left carousel-control" href="#carousel-<%=@recipe.name %>" data-slide="prev">
+					    	<span class="icon-prev"></span>
+					  	</a>
+					  	<a class="right carousel-control" href="#carousel-<%=@recipe.name %>" data-slide="next">
+					    	<span class="icon-next"></span>
+					  	</a>
+						</div>
+						<% else %>
+							<%= image_tag image_url("placeholder.jpg"), class: "img-thumbnail" %>
+					<% end %>
+					<!-- end of Carousel -->
+
+					<a data-toggle="modal" href="#photoModal">
+					<%= image_tag(image_url("camera_add.png")) %> Add Photo
+					</a>
+				</div>
+				<div class="col-md-offset-1 col-md-6 col-sm-offset-1 col-sm-6">
+					<div class="col-md-8 col-sm-8 col-xs-8">
+					<%= render_stars(@recipe.average_rating) %>
+					</div>
+					<% if @recipe.average_rating > 0 %>
+						<ul class="list-inline">
+							<li><%= pluralize @recipe.average_rating, 'cupcake' %></li>
+							<li><%= pluralize @recipe.ratings.size, 'rating' %></li>
+						</ul>
+					<% else %>
+						<ul class="list-inline">
+							<li><a data-toggle="modal" href="#ratingModal"><%= image_tag(image_url("rating_add.png")) %>Be the first to review!</a></li>
+						</ul>
+					<% end %>
+					<p><%= link_to "Source", @recipe.source, target: "_blank" %></p>
+				</div>
+			</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							
+						</div>
+						<div class="bg-white">
+							<div class="col-md-12 col-sm-12">
+								<ul class="list-inline">
+									<% if @recipe.cupcake_count %>
+										<li>Makes <%= pluralize @recipe.cupcake_count, "cupcake" %></li>
+									<% end %>
+									<% if @recipe.baketemp %>
+										<li>Bake Temperature: <%= @recipe.baketemp %>°F</li>
+									<% end %>
+									<% if @recipe.baketime %>
+										<li>Bake Time: <%= @recipe.baketime %> minutes </li>
+									<% end %>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="clearfix bg-white">
+						<div class="col-md-6 col-sm-6">
+							<fieldset>
+								<legend><h3>Ingredients</h3></legend>
+								<%= markdown(@recipe.components) %>
+							</fieldset>
+						</div>
+						<div class="col-md-6 col-sm-6">
+							<fieldset>
+								<legend><h3>Instructions</h3></legend>
+								<%= markdown(@recipe.instructions) %>
+							</fieldset>
+						</div>
+						<%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
+					</div>
+				</div>
+		</div>
+		<div class="col-md-4 col-sm-12 col-xs-12">
+			<h1 class="ribbon"> Reviews </h1>
+			<a data-toggle="modal" href="#ratingModal">
+				<%= image_tag(image_url("rating_add.png")) %>Rate & Review
+			</a>
+			<% @ratings.each do |item|%>
+				<div class="review bg-white">
+						<div class="row">
+							<div class="col-md-7 col-sm-4 col-xs-8">
+								<%= render_stars(item.star) %>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<blockquote><%= item.review %></blockquote>
+							</div>
+							<div class="col-md-12">
+								<small>Cupcake Aficionado: <%= item.user ? item.user.username : "Anonymous" %></small>
+							</div>
+						</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<%= render 'ratings_modal' %>
+	<%= render 'photos_modal' %>
+</div>

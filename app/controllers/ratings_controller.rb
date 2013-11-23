@@ -10,10 +10,10 @@ class RatingsController < ApplicationController
 
   def create
   	@rating = @rateable.ratings.new(rating_params)
-    @rating.update_attribute(:user_id, current_user.id)
+    @rating.update_attribute(:user_id, current_user.id) if current_user
   	if @rating.save
       @rateable.update_attribute(:average_rating, @rateable.ratings.average(:star))
-  		redirect_to @rateable, notice: "Rating created"
+  		redirect_to @rateable, notice: "Thank you for your review!"
   	else
   		render :new
   	end
@@ -32,7 +32,7 @@ class RatingsController < ApplicationController
   end
 
   def load_rateable
-  	klass = [Mastercake].detect { |r| params["#{r.name.underscore}_id"] }
+  	klass = [Recipe, Cupcake].detect { |r| params["#{r.name.underscore}_id"] }
   	@rateable = klass.find(params["#{klass.name.underscore}_id"])
   end
 end

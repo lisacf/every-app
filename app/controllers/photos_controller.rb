@@ -10,6 +10,7 @@ class PhotosController < ApplicationController
 
   def create
   	@photo = @photoable.photos.new(photo_params)
+    @photo.update_attribute(:user_id, current_user.id) if current_user
   	if @photo.save
   		redirect_to @photoable, notice: "Photo created"
   	else
@@ -26,11 +27,11 @@ class PhotosController < ApplicationController
 
   private
   def photo_params
-  	params.require(:photo).permit(:filepicker_url, :user_id)
+  	params.require(:photo).permit(:image, :remote_image_url, :user_id)
   end
 
   def load_photoable
-  	klass = [Cupcake, Store].detect { |r| params["#{r.name.underscore}_id"] }
+  	klass = [Cupcake, Recipe].detect { |r| params["#{r.name.underscore}_id"] }
   	@photoable = klass.find(params["#{klass.name.underscore}_id"])
   end
 end

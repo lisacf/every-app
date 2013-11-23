@@ -1,15 +1,20 @@
 Everyapp::Application.routes.draw do
-  resources :stores do
+  resources :welcome, only: :index
+  resources :categories
+
+  resources :recipes do
     resources :photos
+    resources :ratings
   end
   resources :cupcakes do
     resources :photos
+    resources :ratings
   end
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   devise_for :admins
   get '/token' => 'cupcake#token', as: :token
   match '/auth/failure', to: redirect('/signin'), via: 'get'
-  root to: 'cupcakes#index'
+  root to: "welcome#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

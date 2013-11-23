@@ -1,15 +1,17 @@
 class CreateRecipes < ActiveRecord::Migration
   def change
     create_table :recipes do |t|
-      t.string :recipe_name
+      t.string :name
       t.string :cupcake_part
-      t.integer :user_id
-      t.string :ingredients
+      t.string :components
       t.string :instructions
+      t.string :source
       t.integer :baketemp
-      t.integer :baketime
-      t.integer :preptime
-      t.integer :cupcake_count
+      t.string :baketime
+      t.integer :cupcake_count, default: 0
+      t.float :average_rating, default: 0.0, null: false
+      t.integer :ratings_count, default: 0
+      t.belongs_to :category, index: true
       t.belongs_to :user, index: true
 
       t.timestamps

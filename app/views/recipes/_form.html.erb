@@ -1,0 +1,39 @@
+<%= form_for @recipe do |f| %>
+	<div class="form-group">
+		<%= f.label :name %>
+		<%= f.text_field :name, class: "form-control" %>
+	</div>
+	<div class="form-group">
+		<%= f.label :source %>
+		<%= f.text_field :source, class: "form-control"  %>
+	</div>
+	<div class="form-group">
+		<%= f.label :cupcake_part_cake, "cake" %>
+		<%= f.radio_button :cupcake_part,  "cake", checked: true %>
+		<%= f.label :cupcake_part_filling, "filling" %>
+		<%= f.radio_button :cupcake_part, "filling" %>
+		<%= f.label :cupcake_part_frosting, "frosting" %>
+		<%= f.radio_button :cupcake_part, "frosting" %>
+	</div>
+		<div class="form-group">
+		<%= f.label :cupcake_count, "Makes" %>
+		<%= f.text_field :cupcake_count, class: "form-control"  %>
+	</div>
+	<div class="form-group">
+		<%= f.label :components, "Ingredients" %>
+		<%= f.text_area :components, class: "form-control"  %>
+	</div>
+	<div class="form-group">
+		<%= f.label :baketemp %>
+		<%= f.text_field :baketemp, class: "form-control"  %>
+	</div>
+	<div class="form-group">
+		<%= f.label :baketime %>
+		<%= f.text_field :baketime, class: "form-control" %>
+	</div>
+	<div class="form-group">
+		<%= f.label :instructions %>
+		<%= f.text_area :instructions, class: "form-control"  %>
+	</div>
+	<%= f.submit %>
+<% end %>

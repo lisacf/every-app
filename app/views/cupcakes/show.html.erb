@@ -1,9 +1,14 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 col-sm-12">
-			<h1><%= @cupcake.name %></h1>
-			<div class="row">
-				<div class="col-md-6 col-sm-6">
+			<h1 class="ribbon">
+			<%= @cupcake.name %>
+			<% unless @cupcake.name.downcase.include?("cupcake") %>
+				Cupcake
+			<% end %>
+			</h1>
+			<div class="row bg-white">
+				<div class="col-md-5 col-sm-5 col-xs-offset-1 col-xs-9">
 				<!-- Carousel of PHOTOS -->
 					<% if @cupcake.photos.length >= 1 %>
 						<div id="carousel-<%= @cupcake.name %>" class="carousel slide">
@@ -22,11 +27,11 @@
 							<% @cupcake.photos.each_with_index do |photo, index| %>
 								<% if index == 0 %>
 								<div class="item active">
-									<%= filepicker_image_tag photo.filepicker_url, w:768, h:768, fit: 'scale' %>
+									<%= image_tag image_url(photo.image) %>
 								</div>
 								<% else %>
 									<div class="item">
-										<%= filepicker_image_tag photo.filepicker_url, w:768, h:768, fit: 'scale' %>
+										<%= image_tag image_url(photo.image) %>
 									</div>
 								<% end %>
 
@@ -40,12 +45,14 @@
 					  	</a>
 						</div>
 						<% else %>
-							<%= image_tag image_url("placeholder.png") %>
+							<%= image_tag image_url("placeholder.jpg"), class: "img-thumbnail" %>
 					<% end %>
 					<!-- end of Carousel -->
-					<p><%= link_to "Add a Photo", new_cupcake_photo_path(@cupcake) %></p>
+					<a data-toggle="modal" href="#photoModal">
+					<%= image_tag(image_url("camera_add.png")) %> Add Photo
+					</a>
 				</div>
-				<div class="col-md-6 col-sm-6">
+				<div class="col-md-offset-1 col-md-6 col-sm-offset-1 col-sm-6">
 					<div class="col-md-8 col-sm-8 col-xs-8">
 					<%= render_stars(@cupcake.average_rating) %>
 					</div>
@@ -53,68 +60,82 @@
 						<ul class="list-inline">
 							<li><%= pluralize @cupcake.average_rating, 'cupcake' %></li>
 							<li><%= pluralize @cupcake.ratings.size, 'rating' %></li>
-					<% else %>
-							<li>Be the first to rate this recipe!</li>
-					<% end %>
 						</ul>
+					<% else %>
+						<ul class="list-inline">
+							<li><a data-toggle="modal" href="#ratingModal"><%= image_tag(image_url("rating_add.png")) %>Be the first to review!</a></li>
+						</ul>
+					<% end %>
 					<blockquote><%= @cupcake.description %></blockquote>
 					<p>Source: <%= @cupcake.source %></p>
 				</div>
 			</div>
 			<% @cupcake.recipes.each do |recipe| %>
-				<div class="row">
-					<div class="col-md-12 col-sm-12">
-						<h2><%= recipe.recipe_name %> <%= recipe.cupcake_part %></h2>
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<h2 class="ribbon"><%= recipe.name %> <%= recipe.cupcake_part.capitalize %></h2>
+						</div>
+						<div class="bg-white">
+							<div class="col-md-12 col-sm-12">
+								<ul class="list-inline">
+									<% if recipe.cupcake_count %>
+										<li>Makes <%= pluralize recipe.cupcake_count, "cupcake" %></li>
+									<% end %>
+									<% if recipe.baketemp %>
+										<li>Bake Temperature: <%= recipe.baketemp %>°F</li>
+									<% end %>
+									<% if recipe.baketime %>
+										<li>Bake Time: <%= recipe.baketime %> minutes </li>
+									<% end %>
+									<% if recipe.preptime %>
+										<li>Prep Time: <%= recipe.preptime %> minutes </li>
+									<% end %>
+								</ul>
+							</div>
+						</div>
 					</div>
-					<div class="col-md-12 col-sm-12">
-						<ul class="list-inline">
-							<% if recipe.cupcake_count %>
-								<li>Makes <%= pluralize recipe.cupcake_count, "cupcake" %></li>
-							<% end %>
-							<% if recipe.baketemp %>
-								<li>Bake Temperature: <%= recipe.baketemp %>°F</li>
-							<% end %>
-							<% if recipe.baketime %>
-								<li>Bake Time: <%= recipe.baketime %> minutes </li>
-							<% end %>
-							<% if recipe.preptime %>
-								<li>Prep Time: <%= recipe.preptime %> minutes </li>
-							<% end %>
-						</ul>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6 col-sm-6">
-						<fieldset>
-							<legend>Ingredients</legend>
-							<%= markdown(recipe.ingredients) %>
-						</fieldset>
-					</div>
-					<div class="col-md-6 col-sm-6">
-						<fieldset>
-						<legend>Instructions</legend>
-							<%= markdown(recipe.instructions) %>
-						</fieldset>
-					</div>
+					<div class="row">
+						<div class="clearfix bg-white">
+						<div class="col-md-6 col-sm-6">
+							<fieldset>
+								<legend><h3>Ingredients</h3></legend>
+								<%= markdown(recipe.components) %>
+							</fieldset>
+						</div>
+						<div class="col-md-6 col-sm-6">
+							<fieldset>
+								<legend><h3>Instructions</h3></legend>
+								<%= markdown(recipe.instructions) %>
+							</fieldset>
+						</div>
+						</div>
 				</div>
 			<% end %>
 		</div>
-		<div class="col-md-4 col-sm-12">
-			<h1> Reviews </h1>
-				<% for rating in @cupcake.ratings %>
-					<fieldset>
-							<div class="row">
-							<div class="col-md-7 col-sm-4 col-xs-8"><%= render_stars(rating.star) %></div>
+		<div class="col-md-4 col-sm-12 col-xs-12">
+			<h1 class="ribbon"> Reviews </h1>
+			<a data-toggle="modal" href="#ratingModal">
+				<%= image_tag(image_url("rating_add.png")) %>Rate & Review
+			</a>
+			<% @ratings.each do |item|%>
+				<div class="review bg-white">
+						<div class="row">
+							<div class="col-md-7 col-sm-4 col-xs-8">
+								<%= render_stars(item.star) %>
 							</div>
-							<div class="row">
+						</div>
+						<div class="row">
 							<div class="col-md-12">
-							<%= rating.review %>
+								<blockquote><%= item.review %></blockquote>
 							</div>
 							<div class="col-md-12">
-							<small>Cupcake Aficionado: <%= rating.user.username if rating.user %></small>
+								<small>Cupcake Aficionado: <%= item.user ? item.user.username : "Anonymous" %></small>
 							</div>
-					</fieldset>
-				<% end %>
+						</div>
+				</div>
+			<% end %>
 		</div>
 	</div>
+	<%= render 'ratings_modal' %>
+	<%= render 'photos_modal' %>
 </div>

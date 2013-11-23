@@ -11,28 +11,13 @@
   <meta name="description" content="<%= content_for?(:description)? yield(:description): 'everycupcake' %>">
   <%= stylesheet_link_tag    "application", media: "all" %>
   <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Diplomata+SC' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag ENV["GOOGLE_MAPS"] %>
-  <%= filepicker_js_include_tag %>
   <%= csrf_meta_tags %>
   
 </head>
 <body class="<%= controller_name %><%= action_name %>">
-      <% if user_signed_in? -%>
-        <div id="user_login_box" style="float:right">
-          <%= current_user.email %> |
-          <%= link_to 'My info', edit_user_registration_path %> |
-          <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-        </div>
-      <% end -%>
-      <% if admin_signed_in? -%>
-        <div id="admin_login_box" style="float:left">
-          <%= current_admin.email %> |
-          <%= link_to 'Sign out', destroy_admin_session_path, method: :delete %>
-        </div>
-      <% end -%>
-
-      
   <div class="container">
 	<%= render 'layouts/header' %>
   <%= render 'layouts/messages' %>

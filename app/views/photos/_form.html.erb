@@ -1,0 +1,15 @@
+<%= form_for [@photoable, @photo] do |f| %>
+			<div class="row">
+				<div class="col-sm-12">
+					<fieldset>
+						<legend>Add a Cupcake Photo</legend>
+							<%= f.file_field :image %>
+							<div class="form-group">
+							<%= f.label :remote_image_url, "Url:" %>
+							<%= f.text_field :remote_image_url, class: "form-control" %>
+							</div>
+					</fieldset>
+				</div>
+			</div>
+		<div class="modal-footer"><%= f.submit "Add Photo", class:"btn btn-primary" %></div>
+<% end %>

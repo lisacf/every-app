@@ -1,39 +1,35 @@
-<div class="ribbon">
-    <span class="ribbon-content">Cupcake Recipes</span>
+<div class="row">
+	<div class="col-xs-offset-1 col-xs-12">
+		<div class="ribbon">
+	    <span class="ribbon-content">Cupcake Recipes</span>
+		</div>
+		<%= link_to "New Cupcake", new_cupcake_path %>
+	</div>
 </div>
 <div class="row">
+	<div class="col-xs-12">
+	<ul class="list-inline">
 	<% @cupcakes.each do |cupcake| %>
-		<div class="col-xs-6 col-sm-4 col-md-3">
-			<p class="text-center"><%= link_to cupcake.name, cupcake %></p>
-			<div class="row">
-				<div class="col-md-12">
-					<% if cupcake.photos.length >= 1 %>
-						<div class="picture"><%= link_to (filepicker_image_tag cupcake.photos.first.filepicker_url, 
-							w:600, h:600, fit: 'scale'), cupcake %></div>
-					<% else %>
-						<div class="picture"><%= image_tag image_url("placeholder.png"), w:300, h:300, fit: 'scale' %></div>
-					<% end %>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-9 col-sm-9 col-xs-11">
-					<%= render_stars(cupcake.average_rating) %>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 col-sm-12 col-xs-12">
-					<ul class="list-inline">
-						<% if cupcake.average_rating > 0 %>
-							<li><%= pluralize cupcake.average_rating, "cupcake" %></li>
-							<li><%= pluralize cupcake.ratings.size, 'rating' %>  </li>
-						<% else %>
-							<li>Be the first to rate this recipe! </li>
-						<% end %>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<% end %>
-</div>
+		<li>
+			<div class="index-item bg-white">
+				<% if cupcake.photos.length >= 1 %>
+					<div class="picture"><%= link_to (image_tag cupcake.photos.first.image), cupcake %></div>
+				<% else %>
+					<div class="picture"><%= link_to (image_tag image_url("placeholder.jpg")), cupcake %></div>
+				<% end %>
 
+				<% if cupcake.average_rating >= 1 %>
+						<div class="star-wrapper"><%= render_stars(cupcake.average_rating) %></div>
+				<% else %>
+						<div class="rating-text">
+							<span><%= link_to "Rate!", cupcake %> </span>
+						</div>
+				<% end %>
+				<div class="oneline"><%= link_to cupcake.name, cupcake %></div>
+			</div>
+		</li>
+		<% end %>
+	</ul>
+	</div>
+</div>
 

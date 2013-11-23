@@ -53,7 +53,10 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
+gem 'carrierwave_direct'
+gem 'carrierwave'
+gem 'fog', "~> 1.3.1"
+gem "rmagick"
 
 gem 'devise'
 gem 'omniauth'
@@ -62,8 +65,8 @@ gem 'omniauth-facebook'
 gem 'koala'
 
 gem 'geocoder'
-gem 'filepicker-rails'
 gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
 gem "factory_girl_rails", ">= 4.2.0", :group => [:development, :test]
 gem "better_errors", ">= 0.3.2", :group => :development
 gem "binding_of_caller"
+gem "nokogiri", "~> 1.5.0"

@@ -1,7 +1,25 @@
+$grid-columns:              12;
+$grid-gutter-width:         10px;
+
+// Extra small screen / phone
+// $screen-xsmall:              480px;
+// $screen-phone:               $screen-xsmall;
+
+// // Small screen / tablet
+// $screen-small:               768px;
+// $screen-tablet:              $screen-small;
+
+// // Medium screen / desktop
+// $screen-medium:              992px;
+// $screen-desktop:             $screen-medium;
+
+// // Large screen / wide desktop
+// $screen-large:               1200px;
+// $screen-large-desktop:       $screen-large;
+
 $brand-primary: #8019ea;
 $brand-hover: #e000ff;
-$font-size-base:          16px;
-$headings-font-weight:    500;
+$font-size-base:          14px;
 $font-color: black;
 
 // NAV BAR
@@ -26,6 +44,7 @@ $navbar-default-toggle-border-color:       $brand-primary;
 $iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
 $iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
 
+
 // Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
 // $fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
 // $fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot?#iefix");
@@ -37,38 +56,45 @@ $iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.pn
 // $navbar-inverse-link-color: #eee;
 // $navbar-inverse-toggle-hover-bg: #fe85ff;
 //$font-family-base:   "Josefin Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-family-sans-serif:   "Josefin Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$body-bg: lighten(#ff6fcf, 20%);
-$font-family-serif:       "Josefin Sans", Georgia, "Times New Roman", Times, serif;
-$font-family-monospace:   "Josefin Sans", Monaco, Menlo, Consolas, "Courier New", monospace;
-$font-family-base:        $font-family-sans-serif;
-$headings-font-family:    $font-family-base;
+// $font-family-sans-serif:   "Josefin Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$body-bg: #fff;
+// $font-family-serif:       "Josefin Sans", Georgia, "Times New Roman", Times, serif;
+// $font-family-monospace:   "Josefin Sans", Monaco, Menlo, Consolas, "Courier New", monospace;
+// $font-family-base:        $font-family-sans-serif;
+// $headings-font-family:    $font-family-base;
+$headings-color: $brand-primary;
 // $headings-font-weight:    bold;
-
 
 @import "twitter/bootstrap";
 // @import "bootstrap";
 body { padding-top: 60px;}
-body,
-.container,
-li,
-p,
-input,
-button,
-select,
-textarea,
-.navbar-search, .search-query {
-  font-family:  "Josefin Sans", sans-serif;
-}
+// body,
+// .container,
+// li,
+// p,
+// input,
+// button,
+// select,
+// textarea,
+// .navbar-search, .search-query {
+//   font-family:  "Josefin Sans", sans-serif;
+// }
 
-.navbar-brand {
-	font-weight:800;
-	font-size: 2.5em;
-}
 .row img {
 	max-width:100%;
 }
-
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  color: $headings-color;
+  small {
+    font-weight: normal;
+    line-height: 1;
+    color: $headings-small-color;
+  }
+}
 // @import "bootstrap-responsive";
 
 
@@ -88,15 +114,14 @@ textarea,
 
 // Example:
 // @linkColor: #ff0000;
-.row {
-	background:#fff;
-}
 .ratings-cake {
 	padding: 0.5em 0;
 }
 
 /* FORMAT RIBBON TITLE BAR */
-
+.bg-white {
+  background: #fff;
+}
 .ribbon {
   width: 100%;
   position: relative;
@@ -104,23 +129,90 @@ textarea,
   color: #fff;
   text-align: center;
   letter-spacing: 0.1em;
-  font-size: 2em;
+  font-size: 1.5em;
   text-shadow: 0px -1px 0px rgba(0,0,0,0.3);
   font-weight: bold;
-  padding: 0.1em 1em;
+  padding: 0.1em 1em 0.1em 0em;
   margin: 0.5em 0 0.5em;
   box-shadow: inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 20px rgba(0,0,0,0.1), 0px 1px 1px rgba(0,0,0,0.4);
   background: -webkit-linear-gradient(top, #78eeeb, #06c5c7);
   display: inline-block;
+  text-overflow : ellipsis;
+  overflow: hidden;
 }
 .picture {
-	border: 5px solid pink;
-	height:100%;
-	width:100%;
+	border: 2px inset pink;
+  overflow:hidden;
+  img { height: 100%;
+        width: 100%; }
+}
+.index-item {
+  border: outset 2px lighten(purple, 60%);
+  margin-top: 5px;
+  width:130px;
+}
+
+.oneline {
+    text-overflow : ellipsis;
+    white-space   : nowrap;
+    text-align: center;
+    width         : 125px;
+    overflow      : hidden;
 }
 .stars {
+  background:#fff;
+  width:90%;
+  margin:auto;
   img {
     width:20%;
   }
+  margin-bottom: 0.1em;
+  border: 1px inset pink;
+  padding-bottom: 0.2em;
+  margin-top: 0.1em;
 }
+.review {
+  padding: 0.2em;
+}
+
+.rating-text {
+  background:#fff;
+  width:90%;
+  margin:auto;
+  text-align:center;
+  height:27px;
+  margin-top:0.1em;
+  margin-bottom:0.1em;
+  border: 1px inset pink;
+  span {
+    font-size:12px;
+    a {
+      color: $brand-hover;
+    }
+  }
+}
+.text-center {
+  font-size: 12px;
+}
+
+legend {
+  padding-top: 0.1em;
+}
+.picture {
+  height:125px;
+  width: 125px;
+}
+.star-wrapper {
+  width: 125px;
+}
+@media(max-width:480px){
+  .ribbon {
+    font-size: 1.25em;
+    letter-spacing:none;
+    padding: 0.5em 0 0.5em 0;
+  }
+}
+@media(min-width:768px){}
+@media(min-width:992px){}
+@media(min-width:1200px){}
 
