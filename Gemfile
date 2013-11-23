@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -40,6 +42,9 @@ group :test do
 	gem "database_cleaner", ">= 0.9.1"
 	gem "capybara", ">= 2.0.2"
 	gem "email_spec"
+end
+group :production do
+  gem 'rails_12factor'
 end
 
 # Use ActiveModel has_secure_password
