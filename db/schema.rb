@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131105050712) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -29,9 +32,9 @@ ActiveRecord::Schema.define(version: 20131105050712) do
     t.datetime "updated_at"
   end
 
-  add_index "admins", ["email"], name: "index_admins_on_email", unique: true
-  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  add_index "admins", ["username"], name: "index_admins_on_username", unique: true
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
+  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
+  add_index "admins", ["username"], name: "index_admins_on_username", unique: true, using: :btree
 
   create_table "cakecombos", force: true do |t|
     t.integer  "recipe_id"
@@ -40,8 +43,8 @@ ActiveRecord::Schema.define(version: 20131105050712) do
     t.datetime "updated_at"
   end
 
-  add_index "cakecombos", ["cupcake_id"], name: "index_cakecombos_on_cupcake_id"
-  add_index "cakecombos", ["recipe_id"], name: "index_cakecombos_on_recipe_id"
+  add_index "cakecombos", ["cupcake_id"], name: "index_cakecombos_on_cupcake_id", using: :btree
+  add_index "cakecombos", ["recipe_id"], name: "index_cakecombos_on_recipe_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -60,7 +63,7 @@ ActiveRecord::Schema.define(version: 20131105050712) do
     t.datetime "updated_at"
   end
 
-  add_index "cupcakes", ["user_id"], name: "index_cupcakes_on_user_id"
+  add_index "cupcakes", ["user_id"], name: "index_cupcakes_on_user_id", using: :btree
 
   create_table "ingredients", force: true do |t|
     t.string   "name"
@@ -68,7 +71,7 @@ ActiveRecord::Schema.define(version: 20131105050712) do
     t.datetime "updated_at"
   end
 
-  add_index "ingredients", ["name"], name: "index_ingredients_on_name", unique: true
+  add_index "ingredients", ["name"], name: "index_ingredients_on_name", unique: true, using: :btree
 
   create_table "photos", force: true do |t|
     t.string   "image"
@@ -79,8 +82,8 @@ ActiveRecord::Schema.define(version: 20131105050712) do
     t.integer  "user_id"
   end
 
-  add_index "photos", ["photoable_id", "photoable_type"], name: "index_photos_on_photoable_id_and_photoable_type"
-  add_index "photos", ["user_id"], name: "index_photos_on_user_id"
+  add_index "photos", ["photoable_id", "photoable_type"], name: "index_photos_on_photoable_id_and_photoable_type", using: :btree
+  add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
 
   create_table "proportions", force: true do |t|
     t.integer  "ingredient_id"
@@ -92,8 +95,8 @@ ActiveRecord::Schema.define(version: 20131105050712) do
     t.datetime "updated_at"
   end
 
-  add_index "proportions", ["ingredient_id"], name: "index_proportions_on_ingredient_id"
-  add_index "proportions", ["recipe_id"], name: "index_proportions_on_recipe_id"
+  add_index "proportions", ["ingredient_id"], name: "index_proportions_on_ingredient_id", using: :btree
+  add_index "proportions", ["recipe_id"], name: "index_proportions_on_recipe_id", using: :btree
 
   create_table "ratings", force: true do |t|
     t.integer  "star"
@@ -105,15 +108,15 @@ ActiveRecord::Schema.define(version: 20131105050712) do
     t.text     "review"
   end
 
-  add_index "ratings", ["rateable_id", "rateable_type"], name: "index_ratings_on_rateable_id_and_rateable_type"
-  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
+  add_index "ratings", ["rateable_id", "rateable_type"], name: "index_ratings_on_rateable_id_and_rateable_type", using: :btree
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id", using: :btree
 
   create_table "recipes", force: true do |t|
     t.string   "name"
     t.string   "cupcake_part"
-    t.string   "components"
-    t.string   "instructions"
-    t.string   "source"
+    t.text     "components"
+    t.text     "instructions"
+    t.text     "source"
     t.integer  "baketemp"
     t.string   "baketime"
     t.integer  "cupcake_count",  default: 0
@@ -125,8 +128,8 @@ ActiveRecord::Schema.define(version: 20131105050712) do
     t.datetime "updated_at"
   end
 
-  add_index "recipes", ["category_id"], name: "index_recipes_on_category_id"
-  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"
+  add_index "recipes", ["category_id"], name: "index_recipes_on_category_id", using: :btree
+  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id", using: :btree
 
   create_table "stores", force: true do |t|
     t.string   "name"
@@ -172,11 +175,11 @@ ActiveRecord::Schema.define(version: 20131105050712) do
     t.datetime "oauth_expires_at"
   end
 
-  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

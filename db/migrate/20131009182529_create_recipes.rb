@@ -3,9 +3,9 @@ class CreateRecipes < ActiveRecord::Migration
     create_table :recipes do |t|
       t.string :name
       t.string :cupcake_part
-      t.string :components
-      t.string :instructions
-      t.string :source
+      t.text :components
+      t.text :instructions
+      t.text :source
       t.integer :baketemp
       t.string :baketime
       t.integer :cupcake_count, default: 0
