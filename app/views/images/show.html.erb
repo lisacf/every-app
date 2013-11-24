@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @image.name %>
+</p>
+<% if @image.photos.first %>
+	<div class="photo_asset"><%= image_tag @image.photos.first.image %></div>
+<% end %>
+<%= render "photos/form" %>
+
+<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>

@@ -23,17 +23,17 @@
 									<% if index == 0 %>
 										<div class="item active">
 											<% if photo.image? %>
-												<%= image_tag image_url(photo.image) %>
+												<%= image_tag photo.image %>
 											<% else %>
-												<%= image_tag image_url(photo.remote_url)%>
+												<%= image_tag photo.remote_url %>
 											<% end %>
 										</div>
 									<% else %>
 										<div class="item">
 											<% if photo.image? %>
-												<%= image_tag image_url(photo.image) %>
+												<%= image_tag photo.image %>
 											<% else %>
-												<%= image_tag image_url(photo.remote_url)%>
+												<%= image_tag photo.remote_url %>
 											<% end %>
 										</div>
 									<% end %>
@@ -47,12 +47,12 @@
 					  	</a>
 						</div>
 						<% else %>
-							<%= image_tag image_url("placeholder.jpg"), class: "img-thumbnail" %>
+							<%= image_tag "placeholder.jpg", class: "img-thumbnail" %>
 					<% end %>
 					<!-- end of Carousel -->
 
 					<a data-toggle="modal" href="#photoModal">
-					<%= image_tag(image_url("camera_add.png")) %> Add Photo
+					<%= image_tag "camera_add.png" %> Add Photo
 					</a>
 				</div>
 				<div class="col-md-offset-1 col-md-6 col-sm-offset-1 col-sm-6">
@@ -66,7 +66,7 @@
 						</ul>
 					<% else %>
 						<ul class="list-inline">
-							<li><a data-toggle="modal" href="#ratingModal"><%= image_tag(image_url("rating_add.png")) %>Be the first to review!</a></li>
+							<li><a data-toggle="modal" href="#ratingModal"><%= image_tag("rating_add.png") %>Be the first to review!</a></li>
 						</ul>
 					<% end %>
 					<p><%= link_to "Source", @recipe.source, target: "_blank" %></p>
@@ -113,7 +113,7 @@
 		<div class="col-md-4 col-sm-12 col-xs-12">
 			<h1 class="ribbon"> Reviews </h1>
 			<a data-toggle="modal" href="#ratingModal">
-				<%= image_tag(image_url("rating_add.png")) %>Rate & Review
+				<%= image_tag("rating_add.png") %>Rate & Review
 			</a>
 			<% @ratings.each do |item|%>
 				<div class="review bg-white">

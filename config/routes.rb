@@ -1,4 +1,5 @@
 Everyapp::Application.routes.draw do
+
   resources :welcome, only: :index
   resources :categories
 
@@ -6,9 +7,8 @@ Everyapp::Application.routes.draw do
     resources :photos
     resources :ratings
   end
-  resources :cupcakes do
+  resources :images do
     resources :photos
-    resources :ratings
   end
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   devise_for :admins

@@ -14,12 +14,12 @@
 			<div class="index-item bg-white">
 				<% if recipe.photos.length >= 1 %>
 					<% if recipe.photos.first.image? %>
-						<div class="picture"><%= link_to (image_tag image_url(recipe.photos.first.image)), recipe %></div>
+						<div class="picture"><%= link_to (image_tag recipe.photos.last.image), recipe %></div>
 					<% else %>
-						<div class="picture"><%= link_to (image_tag image_url(recipe.photos.first.remote_url)), recipe %></div>
+						<div class="picture"><%= link_to (image_tag recipe.photos.last.remote_url), recipe %></div>
 					<% end %>
 				<% else %>
-					<div class="picture"><%= link_to (image_tag image_url("placeholder.jpg")), recipe %></div>
+					<div class="picture"><%= link_to (image_tag ("placeholder.jpg")), recipe %></div>
 				<% end %>
 
 				<% if recipe.average_rating >= 1 %>

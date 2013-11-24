@@ -31,7 +31,7 @@ class PhotosController < ApplicationController
   end
 
   def load_photoable
-  	klass = [Cupcake, Recipe].detect { |r| params["#{r.name.underscore}_id"] }
+  	klass = [Recipe, Image].detect { |r| params["#{r.name.underscore}_id"] }
   	@photoable = klass.find(params["#{klass.name.underscore}_id"])
   end
 end

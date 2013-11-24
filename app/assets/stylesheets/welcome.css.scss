@@ -1,5 +1,5 @@
 #home .cupcake {
-	background: image_url("applespice.png") no-repeat fixed;
+	background: "applespice.png" no-repeat fixed;
 	background-position: right 20px bottom 20px;
 	background-size:50%;
 	min-height: 1000px;
@@ -21,7 +21,7 @@
 }
 
 #about {
-	background: image_url("banana.png") no-repeat;
+	background: "banana.png" no-repeat;
 	background-position: right 20px bottom 100%;
 	min-height: 500px;
 	height:500px;

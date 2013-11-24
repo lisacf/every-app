@@ -32,7 +32,7 @@ class RatingsController < ApplicationController
   end
 
   def load_rateable
-  	klass = [Recipe, Cupcake].detect { |r| params["#{r.name.underscore}_id"] }
+  	klass = [Recipe].detect { |r| params["#{r.name.underscore}_id"] }
   	@rateable = klass.find(params["#{klass.name.underscore}_id"])
   end
 end
