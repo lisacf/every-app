@@ -117,9 +117,10 @@ for 30 seconds each.\r\n\r\n3. In one bowl sift together the flour, baking powde
 
 vanilla10.save
 Photo.create!(remote_image_url: "http://www.simplyrecipes.com/wp-content/uploads/2009/08/vanilla-vanilla-cupcakes.jpg", photoable_id: 10, photoable_type: "Recipe")
-Photo.create!(remote_image_url: "http://www.simplyrecipes.com/wp-content/uploads/2009/08/vanilla-vanilla-cupcakes.jpg", photoable_id: 11, photoable_type: "Image")
 image1 = Image.create(name: "test")
 image1.save
+Photo.create!(remote_image_url: "http://www.simplyrecipes.com/wp-content/uploads/2009/08/vanilla-vanilla-cupcakes.jpg", photoable_id: 1, photoable_type: "Image")
+
 # vanilla11 = Recipe.create(name: "", cupcake_part: "cake", source: "", 
 #  components:"",
 #  instructions:"", 
