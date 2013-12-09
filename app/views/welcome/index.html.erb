@@ -1,44 +1,36 @@
 
 	<section class="welcome">
 		<div class="row">
-			<div class="col-sm-12">
-				<h1>Global Cupcake Experiment</h1>
+						<h1>Global Cupcake Experiment</h1>
+			<div class="col-sm-4">
+				<div class="row">
+					<div class="col-xs-4 col-sm-12">
+						<div class="col-xs-4"><%= image_tag "bakeicon.png"%></div><div class="col-xs-8"><h2 >BAKE</h2></div>
+					</div>
+					<div class="col-xs-4 col-sm-12">
+					<div class="col-xs-4"><%= image_tag "cupcake.png"%></div><div class="col-xs-8"><h2 >TASTE</h2></div>
+					</div>
+					<div class="col-xs-4 col-sm-12">
+					<div class="col-xs-4"><%= image_tag "awardsm.png"%></div><div class="col-xs-8"><h2 >RATE</h2></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-8">
+
+				<p>Calling all Cupcake Lovers.</p>  
+				<p>Together we can discover what makes an incredible cupcake recipe.</p>
+				<h3>Here's how it works:</h3>
+				<p> Every month EveryCupcake will add a cupcake flavor to the site.  This month we are focusing on <a href="#vanilla">Vanilla</a>. We will search the web looking for cupcake recipes and add them to our recipe page. Feel free to add your favorite recipe.</p>
+				<p>Contribute to the experiment by choosing one or more cupcake recipe.  Bake a batch and share them with 11 other cupcake lovers.  Have everyone who tastes a cupcake fill out a survey capturing the good and the bad aspects of each recipe.</p>
+				<p>Check out the cupcake flavor page to see which recipes are the best.</p>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-xs-12 col-sm-4" id="bake">
-				<title>BAKE</title>
-				<div class="col-xs-1 col-sm-1"></div>
-				<div class="col-xs-10 col-sm-10"><%= image_tag "bake.png" %></div>
-			</div>
-			<div class="col-xs-12 col-sm-4" id="share">
-				<title>TASTE</title>
-				<div class="col-xs-1 col-sm-2"></div>
-				<div class="col-xs-10 col-sm-8"><%= image_tag Image.first.photos.first.image %></div>
-			</div>
-			<div class="col-xs-12 col-sm-4" id="win">
-				<title>RATE</title>
-				<div class="col-xs-4 col-sm-4"></div>
-				<div class="col-xs-4 col-sm-4"><%= image_tag "award.png"%></div>
-			</div>
-		</div>
-		<div class="clearfix"></div>
 	</section>
-
-<section id="home" data-type="background" data-speed="10" class="pages">
-	TEST
-</section>
-<section id="about" data-type="background" data-speed="10">
-	<article>Simple Parallax Scroll</article>
-</section>
-
-
-	<div id="test">
-		</div>
-	</body>
-	<section class="one">
-		<h1>THE ULTIMATE CUPCAKE CHALLENGE</h1>
-	</section>
+	<div class="row">
+		<section class="one">
+			<h1>THE ULTIMATE CUPCAKE CHALLENGE</h1>
+		</section>
+	</div>
 		<ul>
 		<li>Where: Goal of Global Participation</li>
 		<li>Who: Open to everyone.
@@ -48,3 +40,6 @@
 			</ul>
 		</li>
 		</ul>
+	<div class="flavor" id="vanilla">
+		<h1>Flavor Focus <span>VANILLA</span></h1>
+	</div>
